@@ -24,9 +24,29 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                 .map(advertisement -> new AdvertisementDto(
                                 advertisement.getId(),
                                 advertisement.getTitle(),
-                                advertisement.getDescription()
+                                advertisement.getDescription(),
+                                advertisement.getExpirationDate()
                         )
                 )
                 .toList();
     }
+
+//    @Override
+//    public AdvertisementDto create(AdvertisementDto advertisementDto) {
+//        Advertisement advertisement = new Advertisement(
+//                advertisementDto.,
+//                advertisementDto.title(),
+//                advertisementDto.description(),
+//                advertisementDto.expirationDate()
+//        );
+//
+//        advertisementRepository.save(advertisement);
+//
+//        return new AdvertisementDto(
+//                advertisement.getId(),
+//                advertisement.getTitle(),
+//                advertisement.getDescription(),
+//                advertisement.getExpirationDate()
+//        );
+//    }
 }

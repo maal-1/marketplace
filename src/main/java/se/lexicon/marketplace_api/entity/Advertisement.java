@@ -1,11 +1,15 @@
 package se.lexicon.marketplace_api.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 public class Advertisement {
@@ -22,9 +26,14 @@ public class Advertisement {
 
     private LocalDate expirationDate;
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
+    public Advertisement(User user, String description, String title, LocalDate expirationDate) {
+        this.user = user;
+        this.expirationDate = expirationDate;
+        this.description = description;
+        this.title = title;
+    }
 }

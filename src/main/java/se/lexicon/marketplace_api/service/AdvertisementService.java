@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AdvertisementService {
     List<AdvertisementDto> findAll();
+//    AdvertisementDto create(AdvertisementDto advertisementDto);
 }
