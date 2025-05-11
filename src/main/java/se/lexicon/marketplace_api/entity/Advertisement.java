@@ -26,11 +26,11 @@ public class Advertisement {
 
     private LocalDate expirationDate;
 
-    @ManyToOne( cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Advertisement(User user, String description, String title, LocalDate expirationDate) {
+    public Advertisement(User user, String title, String description, LocalDate expirationDate) {
         this.user = user;
         this.expirationDate = expirationDate;
         this.description = description;

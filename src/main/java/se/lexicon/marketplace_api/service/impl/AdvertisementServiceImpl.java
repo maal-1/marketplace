@@ -6,6 +6,7 @@ import se.lexicon.marketplace_api.entity.Advertisement;
 import se.lexicon.marketplace_api.repository.AdvertisementRepository;
 import se.lexicon.marketplace_api.service.AdvertisementService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,32 +22,13 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     public List<AdvertisementDto> findAll() {
         return advertisementRepository.findAll()
                 .stream()
+                .filter(advertisement -> advertisement.getExpirationDate().isAfter(LocalDate.now()))
                 .map(advertisement -> new AdvertisementDto(
-                                advertisement.getId(),
-                                advertisement.getTitle(),
-                                advertisement.getDescription(),
-                                advertisement.getExpirationDate()
-                        )
-                )
+                        advertisement.getId(),
+                        advertisement.getTitle(),
+                        advertisement.getDescription(),
+                        advertisement.getExpirationDate()))
                 .toList();
     }
 
-//    @Override
-//    public AdvertisementDto create(AdvertisementDto advertisementDto) {
-//        Advertisement advertisement = new Advertisement(
-//                advertisementDto.,
-//                advertisementDto.title(),
-//                advertisementDto.description(),
-//                advertisementDto.expirationDate()
-//        );
-//
-//        advertisementRepository.save(advertisement);
-//
-//        return new AdvertisementDto(
-//                advertisement.getId(),
-//                advertisement.getTitle(),
-//                advertisement.getDescription(),
-//                advertisement.getExpirationDate()
-//        );
-//    }
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface AdvertisementRepository extends CrudRepository<Advertisement, Integer> {
     // This interface will automatically provide CRUD operations for the Advertisement entity
     List<Advertisement> findAll();
+    List<Advertisement> findByUser_id(int userId);
+
 }
