@@ -15,12 +15,12 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
 
 
 
-    @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<Object> handleNoResourceFound(NoResourceFoundException exception) {
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(exception.getMessage());
-    }
+//    @ExceptionHandler(NoResourceFoundException.class)
+//    public ResponseEntity<Object> handleNoResourceFound(NoResourceFoundException exception) {
+//        return ResponseEntity
+//                .status(HttpStatus.NOT_FOUND)
+//                .body(exception.getMessage());
+//    }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException exception) {
@@ -47,6 +47,14 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleException(Exception exception) {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(exception.getMessage());
+    }
+
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
                 .body(exception.getMessage());
     }
 
